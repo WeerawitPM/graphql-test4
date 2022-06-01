@@ -14,9 +14,9 @@ export const resolvers = {
     deleteMovie: async (_, args, { dataSources: { movies } }) => {
       return movies.deleteMovie(args)
     },
-    // updateMovie: async (_, args , { dataSources: { movies } }) => {
-    //   return movies.updateMovie(args);
-    // }
+    updateMovie: async (_, id , { dataSources: { movies } }) => {
+      return movies.updateMovie(id);
+    }
   },
 
 }

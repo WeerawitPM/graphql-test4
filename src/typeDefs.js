@@ -9,7 +9,8 @@ export const typeDefs = gql`
 
   type Mutation {
     createMovie(title: String!, rating: Float!, year: Int!): Movie!,
-    deleteMovie(id: ID): DeleteMovie!
+    deleteMovie(id: ID!): DeleteMovie!,
+    updateMovie(id: ID!, input: UpdateMovie!): Movie!
   }
 
   type Movie {
@@ -27,14 +28,7 @@ export const typeDefs = gql`
     _id: ID!
   }
 
-  input EditMovie {
-    _id: ID!
-    title: String!
-    rating: Float!
-    year: Int!
-  }
-
-  type EditMovie {
+  input UpdateMovie {
     title: String!
     rating: Float!
     year: Int!

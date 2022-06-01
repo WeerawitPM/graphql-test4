@@ -19,8 +19,23 @@ export default class Movies extends MongoDataSource {
     if(deleteMovie) return { _id: args.id }
   }
 
-  // async updateMovie({ args }) {
-  //   const updateMovie = await this.model.updateOne({ title: args.title, rating: args.rating, year: args.year });
-  //   if(updateMovie) return { title: args.title, rating: args.rating, year: args.year }
+  // async updateMovie( args ) {
+  //   if(!args.id) return;
+  //     return this.model.findOneAndUpdate (
+  //       {
+  //         _id: args.id
+  //       },
+  //       {
+  //         $set:{
+  //           title: args.title,
+  //           rating: args.rating,
+  //           year: args.year
+  //         }
+  //       }
+  //     )
   // }
+
+  async updateMovie( args ) {
+    return await this.model.findByIdAndUpdate(args.id, args.input, { new: true })
+  }
 }
